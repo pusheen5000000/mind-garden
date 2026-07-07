@@ -1,72 +1,217 @@
+/* ===== Mind Garden — Style Sheet =====
+   Palette:
+   --sky        #A8D8EA  (light blue)
+   --mint       #B8E6D5  (light green)
+   --seafoam    #CFEEDF  (pale green-blue)
+   --periwinkle #C9D9F0  (soft blue-violet)
+   --teal-deep  #3E8E82  (headings / accents)
+   --teal-text  #2D5F5D  (body text)
+   --cream      #F7FBF9  (page background)
+   --white      #FFFFFF
+*/
+
+:root {
+  --sky: #A8D8EA;
+  --mint: #B8E6D5;
+  --seafoam: #CFEEDF;
+  --periwinkle: #C9D9F0;
+  --teal-deep: #3E8E82;
+  --teal-text: #2D5F5D;
+  --cream: #F7FBF9;
+  --white: #FFFFFF;
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow-soft: 0 8px 20px rgba(62, 142, 130, 0.15);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #cdeccd, #a8d8ea);
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--seafoam) 100%);
+  font-family: 'Quicksand', sans-serif;
+  color: var(--teal-text);
 }
 
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  margin: 0;
+}
+
+/* ===== Moving banner ===== */
+/* ===== Moving banner ===== */
+.banner {
+  width: 100%;
+  overflow: hidden;
+  background: var(--teal-deep);
+  padding: 12px 0;
+}
+
+.banner-track {
+  display: block;
+  animation: scroll-banner 30s linear infinite;
+}
+
+.banner-track span {
+  display: inline-block;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+@keyframes scroll-banner {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ===== Layout ===== */
 .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.page-header {
   text-align: center;
-  padding: 40px;
+  margin-bottom: 40px;
 }
 
-h1 {
-  color: #2f4858;
-  margin-bottom: 10px;
+.page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--teal-deep);
 }
 
+.subtitle {
+  margin-top: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* ===== Game grid ===== */
 .game-grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .game-card {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   text-decoration: none;
-  color: #2f4858;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  color: var(--teal-text);
+  padding: 32px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.game-card:hover {
-  transform: translateY(-5px);
+.game-card:hover,
+.game-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(62, 142, 130, 0.25);
+}
+
+.game-card:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: 3px;
+}
+
+.game-card--mint       { background: var(--mint); }
+.game-card--sky        { background: var(--sky); }
+.game-card--seafoam    { background: var(--seafoam); }
+.game-card--periwinkle { background: var(--periwinkle); }
+
+.game-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  /* Placeholder circle — swap in an <img> inside .game-icon later */
+}
+
+.game-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.game-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ===== About section ===== */
+.about-section {
+  margin-top: 56px;
+  padding: 28px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.about-section h3 {
+  color: var(--teal-deep);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .sparkle {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     pointer-events: none;
     box-shadow: 
-        0 0 8px #ffffff,
-        0 0 15px #a8d8ea,
-        0 0 25px #cdeccd;
-    animation: sparkleFade 0.8s ease-out forwards;
+        0 0 6px rgba(255,255,255,0.8),
+        0 0 12px rgba(168,216,234,0.6);
+    animation: sparkleFade 1.5s ease-out forwards;
 }
 
 @keyframes sparkleFade {
     from {
         transform: scale(1);
-        opacity: 1;
+        opacity: 0.8;
     }
     to {
-        transform: scale(0);
+        transform: scale(0.2) translateY(10px);
         opacity: 0;
-        margin-top: 15px;
     }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  color: #6b7d6b;
 }

@@ -2,32 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Anxiety Management Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Garden - Games</title>
+
+  <!-- Fonts: Baloo 2 for friendly rounded headings, Quicksand for easy-to-read body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1> Anxiety Management Games</h1>
-    <p>Pick a game to play!</p>
 
-    <div class="game-grid">
-      <a href="games/breathing.html" class="game-card">
-        <h2> Breathing Bubble</h2>
-        <p>A calming breathing exercise</p>
-      </a>
-
-      <a href="games/worry-monster.html" class="game-card">
-        <h2> Worry Monster</h2>
-        <p>Feed your worries away</p>
-      </a>
-
-      <a href="games/grounding.html" class="game-card">
-        <h2> Grounding Game</h2>
-        <p>5-4-3-2-1 senses activity</p>
-      </a>
+  <!-- Moving banner -->
+  <div class="banner">
+    <div class="banner-track">
+    <span>Thanks for playing! </span>
     </div>
   </div>
 
+  <main class="container">
+    <header class="page-header">
+      <h1>Mind Garden</h1>
+      <p class="subtitle">Pick a game to play!</p>
+    </header>
+
+    <nav class="game-grid">
+      <a href="games/thinking-errors.html" class="game-card game-card--mint">
+        <div class="game-icon" aria-hidden="true"></div>
+        <h2>Thinking Errors</h2>
+        <p>Spot the tricky thoughts</p>
+      </a>
+
+      <a href="games/relaxation.html" class="game-card game-card--sky">
+        <div class="game-icon" aria-hidden="true"></div>
+        <h2>Relaxation</h2>
+        <p>Slow down and breathe</p>
+      </a>
+
+      <a href="games/anxiety-review.html" class="game-card game-card--seafoam">
+        <div class="game-icon" aria-hidden="true"></div>
+        <h2>Anxiety Review</h2>
+        <p>Check in with your feelings</p>
+      </a>
+
+      <a href="games/other-game.html" class="game-card game-card--periwinkle">
+        <div class="game-icon" aria-hidden="true"></div>
+        <h2>Other Game</h2>
+        <p>More fun on the way</p>
+      </a>
+    </nav>
+
+    <section class="about-section">
+      <h3>About This Site</h3>
+      <p>Mind Garden is a little collection of games to help you feel calm, notice your feelings, and take a moment to breathe and grow. Pick any game above to get started!</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
   <script>
 document.addEventListener("mousemove", function(e) {
     const sparkle = document.createElement("div");
@@ -43,6 +75,10 @@ document.addEventListener("mousemove", function(e) {
     }, 800);
 });
 </script>
+
+<footer class="footer">
+  Created by Jenny Bian - 2026
+</footer>
 
 </body>
 </html>
