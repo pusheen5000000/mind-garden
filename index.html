@@ -7,25 +7,42 @@
 </head>
 <body>
   <div class="container">
-    <h1>🌿 Anxiety Management Games</h1>
-    <p>Take a breath and pick something to play!</p>
+    <h1> Anxiety Management Games</h1>
+    <p>Pick a game to play!</p>
 
     <div class="game-grid">
       <a href="games/breathing.html" class="game-card">
-        <h2>🫧 Breathing Bubble</h2>
+        <h2> Breathing Bubble</h2>
         <p>A calming breathing exercise</p>
       </a>
 
       <a href="games/worry-monster.html" class="game-card">
-        <h2>👾 Worry Monster</h2>
+        <h2> Worry Monster</h2>
         <p>Feed your worries away</p>
       </a>
 
       <a href="games/grounding.html" class="game-card">
-        <h2>🌎 Grounding Game</h2>
+        <h2> Grounding Game</h2>
         <p>5-4-3-2-1 senses activity</p>
       </a>
     </div>
   </div>
+
+  <script>
+document.addEventListener("mousemove", function(e) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+
+    sparkle.style.left = e.pageX + "px";
+    sparkle.style.top = e.pageY + "px";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 800);
+});
+</script>
+
 </body>
 </html>
