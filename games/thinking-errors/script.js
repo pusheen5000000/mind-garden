@@ -55,7 +55,10 @@
   const quizFeedback = document.getElementById('quiz-feedback');
 
   const finishOverlay = document.getElementById('finish-overlay');
+  const finishMessage = document.getElementById('finish-message');
   const petKittyBtn = document.getElementById('pet-kitty-btn');
+  const strategiesBtn = document.getElementById('strategies-btn');
+  const strategiesList = document.getElementById('strategies-list');
 
   let pettingMode = false;
   let encourageTimer = null;
@@ -233,6 +236,13 @@
     finishOverlay.hidden = true;
     pettingMode = true;
     kittyStage.classList.add('petting-mode');
+  });
+
+  strategiesBtn.addEventListener('click', () => {
+    strategiesBtn.hidden = true;
+    strategiesList.hidden = false;
+    petKittyBtn.hidden = false;
+    finishMessage.textContent = 'Strategies for Thinking Errors';
   });
 
   buildBubbles();

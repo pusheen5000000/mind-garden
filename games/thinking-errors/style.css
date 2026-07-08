@@ -217,6 +217,11 @@
   display: none !important;
 }
 
+.pet-kitty-btn[hidden],
+.strategies-btn[hidden] {
+  display: none !important;
+}
+
 .quiz-overlay,
 .finish-overlay {
   position: fixed;
@@ -316,6 +321,48 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
+}
+
+.strategies-btn {
+  display: inline-block;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--teal-deep);
+  background: var(--periwinkle);
+  border: 3px solid var(--white);
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.strategies-btn:hover,
+.strategies-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  outline: none;
+}
+
+.strategies-list {
+  text-align: left;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  padding: 16px 20px 16px 36px;
+  margin: 0 0 18px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--teal-text);
+  line-height: 1.5;
+}
+
+.strategies-list li {
+  margin-bottom: 8px;
+}
+
+.strategies-list li:last-child {
+  margin-bottom: 0;
 }
 
 .relax-done-btn,
