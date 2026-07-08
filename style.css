@@ -141,15 +141,38 @@ h1, h2, h3 {
 .game-card--seafoam    { background: var(--seafoam); }
 .game-card--periwinkle { background: var(--periwinkle); }
 
+/* ===== Breathing Basket Catch background ===== */
+.fruit-basket-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.fruit-basket-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/fruitbasket.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+/* Keep text and icons above image */
+.fruit-basket-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .game-icon {
   width: 56px;
   height: 56px;
   margin-bottom: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  /* Placeholder circle — swap in an <img> inside .game-icon later */
+  background: transparent;
 }
-
 .game-card h2 {
   font-size: 1.3rem;
   margin-bottom: 6px;
@@ -159,6 +182,32 @@ h1, h2, h3 {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 600;
+}
+
+/* ===== Thinking Errors background ===== */
+.catthink-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.catthink-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/catthink.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.65;
+  z-index: 0;
+}
+
+/* Keep text above background */
+.catthink-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== About section ===== */
@@ -214,4 +263,13 @@ h1, h2, h3 {
   font-family: 'Quicksand', sans-serif;
   font-size: 0.9rem;
   color: #6b7d6b;
+}
+
+
+.game-card h2,
+.game-card p {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  padding: 3px 10px;
+  box-shadow: 0 4px 10px rgba(62, 142, 130, 0.12);
 }

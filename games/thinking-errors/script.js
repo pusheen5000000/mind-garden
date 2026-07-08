@@ -38,7 +38,7 @@
   const CAT_SPRITE_COUNT = 6; // cat-0.png (sad) ... cat-5.png (happy)
 
   // Cycles through after every correct answer, above the cat.
-  const ENCOURAGEMENTS = ['Great job!', "Kitty's feeling better!", 'Good work!'];
+  const ENCOURAGEMENTS = ['Great job!', 'Good work!', 'Kitty is understanding!', 'Kitty is feeling better!', 'Amazing job!', 'You did it!'];
   const HEART_COUNT_PER_PET = 5;
 
   const kittyStage = document.getElementById('kitty-stage');
