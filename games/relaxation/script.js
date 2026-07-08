@@ -30,16 +30,24 @@
   // a sparkle is caught. Feel free to edit the wording to match your voice.
   const RELAX_EXERCISES = [
     {
-      title: 'Slow Breathing',
-      text: "Let's take a breather. Breathe in slowly through your nose for 4 counts... hold it gently for 4... and breathe out through your mouth for 4. Do that two or three more times. Notice your shoulders softening a little each time you breathe out.",
+      title: 'Belly Breathing',
+      text: "Let's take a breather. Breathe in slowly through your nose for 4 counts... hold it gently for 4... and breathe out through your mouth for 4. Do that two or three more times.",
     },
     {
-      title: 'A Peaceful Place',
-      text: "Picture a place that feels calm and safe to you - maybe a beach, a treehouse, or somewhere cozy at home. Look around that place in your mind. What do you see? What do you hear? Stay there for a few slow breaths before you come back.",
+    title: 'Growing Calm',
+    text: "Imagine you are planting a tiny seed in your Mind Garden. Breathe in slowly as the seed begins to grow, hold for a moment as it reaches toward the sunlight, and breathe out as it blooms. Take a few slow breaths and let yourself feel grounded.",
     },
     {
-      title: 'Body Check-In',
-      text: "Gently scrunch up your shoulders toward your ears, hold for a second... then let them drop and relax. Do the same with your hands - squeeze into a fist, then let go. Notice how much lighter your body feels when you release the tension.",
+    title: 'Watering Your Garden',
+    text: "Think of your mind as a garden that needs care. With every slow breath in, imagine watering your plants with kindness. With every breath out, let go of worries.",
+    },
+    {
+      title: 'A Peaceful Garden',
+      text: "Imagine yourself sitting in a quiet garden. Look around at the flowers, trees, and plants growing around you. Notice the colours, the gentle breeze, and the sounds of nature. Take a few slow breaths and imagine your garden becoming a little more peaceful with each breath.",
+    },
+    {
+      title: 'Growing Calm',
+      text: "Just like plants need care, your body needs moments to rest. Gently relax your shoulders like a flower opening in the sunlight. Let your hands loosen like leaves floating softly in the breeze. Notice the calm growing inside you as you release any tension.",
     },
   ];
 
