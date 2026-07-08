@@ -1,6 +1,3 @@
-// Mind Garden — script.js
-// Kept intentionally simple and calm: no mouse trails, no floating emojis.
-// Add game-specific logic here later, or inside each game's own file.
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Mind Garden loaded. Ready to play!");
