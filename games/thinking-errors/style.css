@@ -48,7 +48,28 @@
   border-radius: var(--radius-lg);
   border: 3px solid var(--white);
   box-shadow: var(--shadow-soft);
-  background: linear-gradient(180deg, var(--seafoam) 0%, var(--sky) 100%);
+
+  overflow: hidden;
+}
+
+.kitty-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("images/kitty-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.75;   /* Change this to make it lighter or darker */
+  z-index: 0;
+}
+
+/* Keep all game elements above the background */
+.kitty-stage > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== Thought bubble row ===== */
@@ -109,8 +130,28 @@
   pointer-events: none;
 }
 
+/* ===== Encouragement text ===== */
+.encourage-text {
+  min-height: 28px;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--teal-deep);
+  text-align: center;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.encourage-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== Cat ===== */
 .cat-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,6 +162,45 @@
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 6px 10px rgba(45, 95, 93, 0.2));
+  transition: transform 0.15s ease;
+}
+
+/* Petting mode: cat grows a little on hover, and gives a happy little
+   bounce when clicked. Only active once the game is finished. */
+.kitty-stage.petting-mode {
+  cursor: pointer;
+}
+
+.kitty-stage.petting-mode .cat-sprite:hover {
+  transform: scale(1.08);
+}
+
+@keyframes pet-bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.15); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.cat-sprite.pet-click {
+  animation: pet-bounce 0.4s ease;
+}
+
+/* Hearts that pop out of the cat when petted */
+.floating-heart {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  pointer-events: none;
+  animation: float-up 2.6s ease-out forwards;
+}
+
+@keyframes float-up {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(0.5); opacity: 0; }
+  12%  { transform: translate(calc(var(--drift, 0px) * 0.15), -20px) rotate(calc(var(--rot, 0deg) * 0.3)) scale(0.95); opacity: 1; }
+  55%  { transform: translate(calc(var(--drift, 0px) * 0.65), -110px) rotate(calc(var(--rot, 0deg) * 0.7)) scale(1.05); opacity: 0.9; }
+  100% { transform: translate(var(--drift, 0px), -210px) rotate(var(--rot, 0deg)) scale(1); opacity: 0; }
 }
 
 .game-hint {
@@ -231,13 +311,19 @@
   margin-bottom: 24px;
 }
 
-.relax-done-btn {
+.finish-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.relax-done-btn,
+.pet-kitty-btn {
   display: inline-block;
   font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--white);
-  background: var(--teal-deep);
   border: none;
   border-radius: var(--radius-md);
   padding: 12px 24px;
@@ -246,8 +332,21 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.relax-done-btn {
+  color: var(--white);
+  background: var(--teal-deep);
+}
+
+.pet-kitty-btn {
+  color: var(--teal-deep);
+  background: var(--mint);
+  border: 3px solid var(--white);
+}
+
 .relax-done-btn:hover,
-.relax-done-btn:focus-visible {
+.relax-done-btn:focus-visible,
+.pet-kitty-btn:hover,
+.pet-kitty-btn:focus-visible {
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
   outline: none;

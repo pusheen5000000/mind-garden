@@ -37,9 +37,16 @@
   const TOTAL = THINKING_ERRORS.length;
   const CAT_SPRITE_COUNT = 6; // cat-0.png (sad) ... cat-5.png (happy)
 
+  // Cycles through after every correct answer, above the cat.
+  const ENCOURAGEMENTS = ['Great job!', "Kitty's feeling better!", 'Good work!'];
+  const HEART_COUNT_PER_PET = 5;
+
+  const kittyStage = document.getElementById('kitty-stage');
   const bubbleRow = document.getElementById('bubble-row');
+  const catWrap = document.getElementById('cat-wrap');
   const catSprite = document.getElementById('cat-sprite');
   const progressText = document.getElementById('progress-text');
+  const encourageText = document.getElementById('encourage-text');
 
   const quizOverlay = document.getElementById('quiz-overlay');
   const quizTitle = document.getElementById('quiz-title');
@@ -48,6 +55,10 @@
   const quizFeedback = document.getElementById('quiz-feedback');
 
   const finishOverlay = document.getElementById('finish-overlay');
+  const petKittyBtn = document.getElementById('pet-kitty-btn');
+
+  let pettingMode = false;
+  let encourageTimer = null;
 
   let currentIndex = 0; // index of the active (unlocked, unsolved) bubble
   let bubbles = [];
@@ -103,6 +114,17 @@
     catSprite.src = `images/cat-${spriteIndex}.png`;
   }
 
+  function showEncouragement(solvedCount) {
+    const message = ENCOURAGEMENTS[(solvedCount - 1) % ENCOURAGEMENTS.length];
+    encourageText.textContent = message;
+    encourageText.classList.add('show');
+
+    clearTimeout(encourageTimer);
+    encourageTimer = setTimeout(() => {
+      encourageText.classList.remove('show');
+    }, 1600);
+  }
+
   let activeQuestionIndex = null;
 
   function openQuiz(index) {
@@ -148,6 +170,7 @@
       currentIndex += 1;
       updateBubbles();
       updateCatSprite();
+      showEncouragement(currentIndex);
 
       if (currentIndex >= TOTAL) {
         setTimeout(() => {
@@ -163,6 +186,54 @@
 
   optionA.addEventListener('click', () => handleOptionClick(optionA));
   optionB.addEventListener('click', () => handleOptionClick(optionB));
+
+  // ===== Pet Kitty mode (after the game is finished) =====
+  // Cursor becomes a glove, hovering the cat grows it slightly, and
+  // clicking gives a happy little bounce plus a burst of hearts.
+
+  function spawnHeartsFromCat() {
+    const catRect = catSprite.getBoundingClientRect();
+    const stageRect = kittyStage.getBoundingClientRect();
+    const originX = catRect.left - stageRect.left + catRect.width / 2;
+    const originY = catRect.top - stageRect.top + catRect.height * 0.15;
+
+    for (let i = 0; i < HEART_COUNT_PER_PET; i++) {
+      const heart = document.createElement('img');
+      heart.src = 'images/heart.png';
+      heart.alt = '';
+      heart.className = 'floating-heart';
+
+      const drift = (Math.random() - 0.5) * 140;
+      const rotate = (Math.random() - 0.5) * 50;
+      heart.style.left = `${originX - 14}px`;
+      heart.style.top = `${originY}px`;
+      heart.style.setProperty('--drift', `${drift}px`);
+      heart.style.setProperty('--rot', `${rotate}deg`);
+      heart.style.animationDelay = `${i * 160}ms`;
+
+      kittyStage.appendChild(heart);
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+  }
+
+  function triggerPetBounce() {
+    catSprite.classList.remove('pet-click');
+    // Force reflow so the animation can restart if clicked again quickly.
+    void catSprite.offsetWidth;
+    catSprite.classList.add('pet-click');
+  }
+
+  catWrap.addEventListener('click', () => {
+    if (!pettingMode) return;
+    triggerPetBounce();
+    spawnHeartsFromCat();
+  });
+
+  petKittyBtn.addEventListener('click', () => {
+    finishOverlay.hidden = true;
+    pettingMode = true;
+    kittyStage.classList.add('petting-mode');
+  });
 
   buildBubbles();
   updateCatSprite();
