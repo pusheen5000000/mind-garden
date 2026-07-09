@@ -31,12 +31,36 @@
   margin-bottom: 12px;
 }
 
+.progress-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  width: fit-content;
+  margin: 0 auto 20px;
+
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3px 15px;
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--white);
+}
+
 .progress-text {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1rem;
   color: var(--teal-text);
-  margin-bottom: 20px;
+  margin: 0;
+}
+
+.progress-fish {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 /* ===== Pond stage ===== */
@@ -287,16 +311,16 @@
   width: 60px;
   height: 60px;
   object-fit: contain;
-  animation: swim 4s ease-in-out infinite alternate;
+  animation: swim 2s ease-in-out infinite alternate;
 }
 
 
 @keyframes swim {
   from {
-    transform: translateX(-20px) translateY(0);
+    transform: translateX(-30px) translateY(0);
   }
 
   to {
-    transform: translateX(20px) translateY(-15px);
+    transform: translateX(30px) translateY(-25px);
   }
 }
