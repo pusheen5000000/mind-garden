@@ -87,9 +87,14 @@ h1, h2, h3 {
 }
 
 .page-header h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
+  font-size: clamp(3.2rem, 6vw, 4.4rem);
+  font-weight: 600;
   color: var(--teal-deep);
+  letter-spacing: 0.5px;
+  text-shadow:
+    0 2px 0 var(--white),
+    0 4px 14px rgba(62, 142, 130, 0.35),
+    0 10px 30px rgba(62, 142, 130, 0.2);
 }
 
 .subtitle {
@@ -256,6 +261,20 @@ h1, h2, h3 {
     }
 }
 
+/* ===== Leaf border decoration ===== */
+.leaf-decoration {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.leaf-decoration svg {
+  width: 100%;
+  height: 100%;
+}
+
 .footer {
   text-align: center;
   margin-top: 50px;
@@ -298,4 +317,37 @@ h1, h2, h3 {
 .anxiety-card > * {
   position: relative;
   z-index: 1;
+}
+
+/* ===== Leaf border decoration ===== */
+.leaf-decoration {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.9; /* increase this to make leaves stronger */
+}
+
+.leaf-decoration svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Cloud behind title ===== */
+.page-header {
+  position: relative;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 550px;
+  background: url("images/cloud.png") center / contain no-repeat;
+  top: -25px;
+  left: 12%;
+  transform: translateY(-27%);
+  z-index: -1;
+  opacity: 1;
 }
