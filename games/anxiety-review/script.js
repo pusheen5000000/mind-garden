@@ -3,7 +3,7 @@
   // Anxiety review questions, adapted from the Jeopardy review.
   // "clue" is read aloud/shown, "correct" is the term the player is fishing for.
   const QUESTIONS = [
-    { clue: 'Breathing in for 5, holding, and breathing out for 5 to help calm your body.', correct: 'The Breathing Triangle' },
+    { clue: 'Breathing in for 5, holding, and breathing out for 5 to help calm your body.', correct: 'Belly Breathing' },
     { clue: 'Tightening up a muscle really tight, then letting it relax.', correct: 'Progressive Muscle Relaxation' },
     { clue: 'Imagining your own calm, happy place with all your senses.', correct: 'Visualization' },
     { clue: 'Your worry alarm going off even though there is no real danger.', correct: 'A False Alarm' },
