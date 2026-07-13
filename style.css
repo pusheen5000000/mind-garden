@@ -351,3 +351,36 @@ h1, h2, h3 {
   z-index: -1;
   opacity: 1;
 }
+
+.garden-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.garden-decor span {
+  position: absolute;
+  opacity: .15;
+  font-size: 3rem;
+}
+
+.garden-decor span:nth-child(1) {
+  top: 15%;
+  left: 8%;
+}
+
+.garden-decor span:nth-child(2) {
+  top: 60%;
+  right: 6%;
+}
+
+.garden-decor span:nth-child(3) {
+  top: 35%;
+  right: 10%;
+}
+
+.garden-decor span:nth-child(4) {
+  bottom: 12%;
+  left: 10%;
+}
