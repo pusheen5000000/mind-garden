@@ -86,10 +86,18 @@ h1, h2, h3 {
   margin-bottom: 40px;
 }
 
+/* Normal, modest heading style — used on game pages */
 .page-header h1 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--teal-deep);
+  letter-spacing: 0.3px;
+}
+
+/* Big glowing title style — homepage only */
+.home-header h1 {
   font-size: clamp(3.2rem, 6vw, 4.4rem);
   font-weight: 600;
-  color: var(--teal-deep);
   letter-spacing: 0.5px;
   text-shadow:
     0 2px 0 var(--white),
@@ -334,12 +342,12 @@ h1, h2, h3 {
   height: 100%;
 }
 
-/* ===== Cloud behind title ===== */
-.page-header {
+/* ===== Cloud behind title (home page only) ===== */
+.home-header {
   position: relative;
 }
 
-.page-header::before {
+.home-header::before {
   content: "";
   position: absolute;
   width: 650px;
